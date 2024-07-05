@@ -1,0 +1,22 @@
+{
+    "user1": {
+        "name": "Giyu",
+        "password" : "water",
+        "profession" : "swordsman",
+        "id" : 1
+    },
+
+    "user2": {
+        "name": "Muichiro",
+        "password" : "mist",
+        "profession" : "swordsman",
+        "id" : 2
+    },
+
+    "user3": {
+        "name": "Rengoku",
+        "password" : "flame",
+        "profession" : "swordsman",
+        "id" : 3
+    }
+}
