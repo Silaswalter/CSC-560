@@ -6,7 +6,7 @@ describe('API Test', () => {
 
   //tests to make sure making a player works
   it('should make a new player', async () => {
-    const res = await(router).post('/players').send({
+    const res = await(router).post('/').send({
       First_Name: 'Jim',
       Last_Name: 'Smith',
       Average_Points: 1,
@@ -26,14 +26,14 @@ describe('API Test', () => {
     
   //tests if it can get all players  
   it('should get all players', async () => {
-    const res = await superTest(router).get('/players')
+    const res = await superTest(router).get('/')
     expect(res.statusCode).toEqual(200)
     expect(Array.isArray(res.body)).toBeTruthy()
   })
   
   //gets the player by the ID that was made earlier  
   it('should get a single player by ID', async () => {
-    const res = await superTest(router).get(`/players/${playerId}`)
+    const res = await superTest(router).get(`/id/${playerId}`)
     expect(res.statusCode).toEqual(200)
     expect(res.body.First_Name).toEqual('Jim')
     expect(res.body.Last_Name).toEqual('Smith')
@@ -45,7 +45,7 @@ describe('API Test', () => {
 
   //updates a player
   it('should update a player', async () => {
-    const res = await superTest(router).patch(`/players/${playerId}`).send({
+    const res = await superTest(router).patch(`/${playerId}`).send({
       First_Name: 'Steve',
       Last_Name: 'Jenkinds',
       Average_Points: 2,
@@ -64,7 +64,7 @@ describe('API Test', () => {
 
   //deletes a player
   it('should delete a player', async () => {
-    const res = await superTest(router).delete(`/players/${playerId}`);
+    const res = await superTest(router).delete(`/${playerId}`);
     expect(res.statusCode).toEqual(200)
     expect(res.body.First_Name).toEqual('Steve')
     expect(res.body.Last_Name).toEqual('Jenkinds')
