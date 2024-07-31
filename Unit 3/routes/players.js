@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 })
 
 //Getting One)
-router.get('/:id', getPlayer, (req, res) => {
+router.get('/id/:id', getPlayer, (req, res) => {
     res.json(res.player)
 })
 
@@ -66,6 +66,7 @@ router.patch('/:id', getPlayer, async (req, res) => {
 
 })
 
+//deleting one
 router.delete('/:id', getPlayer, async (req, res) => {
     try {
         await res.player.deleteOne()
@@ -76,6 +77,7 @@ router.delete('/:id', getPlayer, async (req, res) => {
 
 })
 
+//function for finding a player
 async function getPlayer(req, res, next) {
     let player
     try {
@@ -90,5 +92,55 @@ async function getPlayer(req, res, next) {
     res.player = player
     next()
 }
+
+//Get player with the most average points
+router.get('/top-average-points', async (req, res) => {
+    try{
+        const players = await Player.find().limit(1).sort({Average_Points:-1})
+        res.json(players)
+    }catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
+//Get player with the most average assists
+router.get('/top-average-assists', async (req, res) => {
+    try{
+        const players = await Player.find().limit(1).sort({Average_Assists:-1})
+        res.json(players)
+    }catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
+//Get player with the most average steals
+router.get('/top-average-steals', async (req, res) => {
+    try{
+        const players = await Player.find().limit(1).sort({Average_Steals:-1})
+        res.json(players)
+    }catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
+//Get player with the most average blocks
+router.get('/top-average-blocks', async (req, res) => {
+    try{
+        const players = await Player.find().limit(1).sort({Average_Blocks:-1})
+        res.json(players)
+    }catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
+
+//Get list of players starting with the lowest point average players
+router.get('/point-order', async (req, res) => {
+    try{
+        const players = await Player.find().sort({Average_Points:1})
+        res.json(players)
+    }catch (err) {
+        res.status(500).json({message: err.message})
+    }
+})
 
 module.exports = router
