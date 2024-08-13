@@ -1,0 +1,53 @@
+<button (click) = "allPlayers()"> All Players </button>
+<button (click) = "topPoints()"> Player with the most points </button>
+<button (click) = "topAssists()"> Player with the most assists </button>
+<button (click) = "topSteals()"> Player with the most steals </button>
+<button (click) = "topBlocks()"> Player with the most blocks </button>
+<button (click) = "pointOrder()"> Players ordered by points </button>
+
+<table>
+  <tr>
+    <th>First_Name</th>
+    <th>Last_Name</th>
+    <th>Average_Points</th>
+    <th>Average_Assists</th>
+    <th>Average_Steals</th>
+    <th>Average_Blocks</th>
+  </tr>
+  <tr *ngFor = "let p of player">
+    <td>{{p.First_Name}}</td>
+    <td>{{p.Last_Name}}</td>
+    <td>{{p.Average_Points}}</td>
+    <td>{{p.Average_Assists}}</td>
+    <td>{{p.Average_Steals}}</td>
+    <td>{{p.Average_Blocks}}</td>
+  </tr>
+</table>
+
+<!--code for adding a new player-->
+<!-- 
+<div>
+  <h2>Add Player</h2>
+  <form (ngSubmit)="addPlayer()">
+    <label for="First_Name">First Name:</label>
+    <input id="First_Name" [(ngModel)]="player.First_Name" name="First_Name" required>
+
+    <label for="Last_Name">Last Name:</label>
+    <input id="Last_Name" [(ngModel)]="player.Last_Name" name="Last_Name" required>
+
+    <label for="Average_Points">Most Average Points:</label>
+    <input id="Average_Points" [(ngModel)]="player.Average_Points" name="Average_Points" type="number" required>
+
+    <label for="Average_Assists">Most Average Assists:</label>
+    <input id="Average_Assists" [(ngModel)]="player.Average_Assists" name="Average_Assists" type="number" required>
+
+    <label for="Average_Steals">Most Average Steals:</label>
+    <input id="Average_Steals" [(ngModel)]="player.Average_Steals" name="Average_Steals" type="number" required>
+
+    <label for="Average_Blocks">Most Average Blocks:</label>
+    <input id="Average_Blocks" [(ngModel)]="player.Average_Blocks" name="Average_Blocks" type="number" required>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+-->
